@@ -1,0 +1,17 @@
+# IDE files
+.idea/
+*.iml
+
+# Maven
+target/
+*.log
+
+# WebDriver executables
+chromedriver*
+geckodriver*
+
+# Local Maven repository
+.m2/
+
+# Logs
+logs/

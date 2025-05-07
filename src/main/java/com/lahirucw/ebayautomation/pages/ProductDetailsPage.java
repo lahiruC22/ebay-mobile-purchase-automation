@@ -14,17 +14,11 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class ProductDetailsPage {
 
-    @FindBy(css = ".x-item-title__mainTitle")
-    private WebElement productNameElement;
-
     @FindBy(css = ".x-price-primary")
     private WebElement productPriceElement;
 
-    @FindBy(id = "atcBtn_btn")
-    private WebElement addToCartButton;
-
-    @FindBy(css = ".ux-call-to-action--secondary")
-    private WebElement goToCartButton;
+    @FindBy(id = "binBtn_btn_1")
+    private WebElement buyItNowButton;
 
     public ProductDetailsPage() {
         PageFactory.initElements(DriverManager.getDriver(), this);
@@ -32,30 +26,16 @@ public class ProductDetailsPage {
         LoggerUtil.info("ProductDetailsPage initialized");
     }
 
-    public String getProductName() {
-        String name = productNameElement.getText();
-        LoggerUtil.info("Retrieved product name: " + name);
-        return name;
-    }
-
     public String getProductPrice() {
         String price = productPriceElement.getText();
-        LoggerUtil.info("Retrieved product price: " + price);
+        LoggerUtil.info("Retrieved product price.");
         return price;
     }
 
-    public ProductDetailsPage addToCart() {
-        WaitUtil.waitForClickable(addToCartButton);
-        addToCartButton.click();
-        LoggerUtil.info("Clicked Add to Cart");
-        return this;
+    public UserSelectorModal butItNow() {
+        WaitUtil.waitForClickable(buyItNowButton);
+        buyItNowButton.click();
+        LoggerUtil.info("Clicked But It Now");
+        return new UserSelectorModal();
     }
-
-    public CartPage goToCart() {
-        WaitUtil.waitForClickable(goToCartButton);
-        goToCartButton.click();
-        LoggerUtil.info("Navigated to Cart");
-        return new CartPage();
-    }
-
 }

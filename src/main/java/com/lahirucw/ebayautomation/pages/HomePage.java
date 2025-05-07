@@ -22,6 +22,9 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(text(), 'Smartphones and accessories')]")
     private WebElement cellPhonesLink;
 
+    @FindBy(xpath = "//a[contains(@href, 'Cell-Phones') and .//span[text()='See All']]")
+    private WebElement seeAllLink;
+
     public HomePage() {
         PageFactory.initElements(DriverManager.getDriver(), this);
         WaitUtil.waitForVisible(By.id("gh-ac"));
@@ -35,6 +38,9 @@ public class HomePage {
         WaitUtil.waitForClickable(cellPhonesLink);
         cellPhonesLink.click();
         LoggerUtil.info("Navigated to Cell Phones & Smartphones");
+        WaitUtil.waitForClickable(seeAllLink);
+        seeAllLink.click();
+        LoggerUtil.info("Cicked See All link");
         return new SearchResultsPage();
     }
 

@@ -21,7 +21,8 @@ public class BaseClass {
     public void setup(String browser) throws IOException {
         config = new Properties();
         config.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
-        WebDriverFactory.createDriver(browser);
+        //WebDriverFactory.createDriver(browser);
+        DriverManager.setDriver(WebDriverFactory.createDriver(browser));
         DriverManager.getDriver().manage().window().maximize();
         DriverManager.getDriver().get(config.getProperty("baseUrl"));
         LoggerUtil.info("Browser initialized: " + browser);
